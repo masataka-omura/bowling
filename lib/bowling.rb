@@ -3,6 +3,7 @@ class Bowling
     @total_score = 0
     @scores = [] #全体のスコア
     @temp = [] #一時保存
+    @flame_score = [] #フレームごとのスコア
   end  
   
   def total_score
@@ -17,6 +18,10 @@ class Bowling
     end  
   end  
   
+  def flame_score(flame)
+    @flame_score[flame - 1]
+  end  
+  
   def calc_score
     @scores.each.with_index(1) do |score, index|
       if strike?(score) && not_last_flame?(index)
@@ -26,6 +31,7 @@ class Bowling
       else
         @total_score += score.inject(:+)
       end  
+      @flame_score << @total_score
     end  
   end  
   
