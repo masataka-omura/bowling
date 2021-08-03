@@ -68,7 +68,58 @@ describe "ボウリングのスコア計算" do
         expect(@game.total_score).to eq 28
       end  
     end  
-  end  
+    context "ストライクを取った場合" do
+      it "ストライクボーナスが加算されること" do
+        #第一フレーム
+        @game.add_score(10)
+        #第二フレーム
+        @game.add_score(5)
+        @game.add_score(4)
+        #以降すべてガーター
+        add_many_scores(17, 0)
+        
+        @game.calc_score
+        
+        expect(@game.total_score).to eq 28
+      end
+    end  
+    context "ダブルを取った場合" do
+      it "それぞれのストライクボーナスが加算されること" do
+        #第一フレーム
+        @game.add_score(10)
+        #第二フレーム
+        @game.add_score(10)
+        #第三フレーム
+        @game.add_score(5)
+        @game.add_score(4)
+        #以降すべてガーター
+        add_many_scores(14, 0)
+        
+        @game.calc_score
+        
+        expect(@game.total_score).to eq 53
+      end  
+    end
+    context "ターキーを取った場合" do
+      it "それぞれのストライクボーナスが加算されること" do
+        #第一フレーム
+        @game.add_score(10)
+        #第二フレーム
+        @game.add_score(10)
+        #第三フレーム
+        @game.add_score(10)
+        #第四フレーム
+        @game.add_score(5)
+        @game.add_score(4)
+        #以降すべてガーター
+        add_many_scores(12, 0)
+        
+        @game.calc_score
+        
+        expect(@game.total_score).to eq 83
+      end  
+    end
+  end
 end
 private
 def add_many_score(count, pins)
