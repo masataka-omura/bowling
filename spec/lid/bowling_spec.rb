@@ -76,7 +76,7 @@ describe "ボウリングのスコア計算" do
         @game.add_score(5)
         @game.add_score(4)
         #以降すべてガーター
-        add_many_scores(17, 0)
+        add_many_score(17, 0)
         
         @game.calc_score
         
@@ -93,7 +93,7 @@ describe "ボウリングのスコア計算" do
         @game.add_score(5)
         @game.add_score(4)
         #以降すべてガーター
-        add_many_scores(14, 0)
+        add_many_score(14, 0)
         
         @game.calc_score
         
@@ -112,7 +112,7 @@ describe "ボウリングのスコア計算" do
         @game.add_score(5)
         @game.add_score(4)
         #以降すべてガーター
-        add_many_scores(12, 0)
+        add_many_score(12, 0)
         
         @game.calc_score
         
